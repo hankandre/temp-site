@@ -14,6 +14,12 @@
     "serve": "^4.0.1"
   },
   "now": {
-    "alias": "hankandre.com"
+    "alias": "hankandre.com",
+    "files": [
+      "index.html",
+      "scripts.js",
+      "styles.min.css",
+      "favicon.ico"
+    ]
   }
 }

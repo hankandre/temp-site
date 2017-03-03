@@ -1,0 +1,9 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "stylint": "^1.5.9"
+  }
+}

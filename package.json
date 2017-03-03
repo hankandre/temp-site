@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "deploy": "stylus -c styles.styl && postcss -u autoprefixer cssnano -c ~/.autoprefixer.json styles.css -o styles.min.css && now",
+    "deploy": "stylus styles.styl && postcss -u autoprefixer cssnano -c ~/.autoprefixer.json styles.css -o styles.min.css && now",
     "start": "serve"
   },
   "devDependencies": {
@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "serve": "^4.0.1"
+  },
+  "now": {
+    "alias": "hankandre.com"
   }
 }

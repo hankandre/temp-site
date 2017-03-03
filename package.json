@@ -1,9 +1,16 @@
 {
   "name": "personal-site",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "deploy": "stylus -c styles.styl && now",
+    "start": "serve"
+  },
   "devDependencies": {
-    "stylint": "^1.5.9"
+    "stylint": "^1.5.9",
+    "stylus": "^0.54.5"
+  },
+  "dependencies": {
+    "serve": "^4.0.1"
   }
 }

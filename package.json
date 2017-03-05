@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "deploy": "stylus styles.styl && postcss -u autoprefixer cssnano -c ~/.autoprefixer.json styles.css -o styles.min.css && now",
-    "start": "serve"
+    "predeploy": "yarn run compile:js && yarn run compile:css",
+    "deploy": "now",
+    "start": "serve",
+    "compile:js": "babel scripts.js -o scripts.min.js --minified && uglifyjs scripts.min.js -o scripts.min.js -m",
+    "compile:css": "stylus styles.styl && postcss -u autoprefixer cssnano -c ~/.autoprefixer.json styles.css -o styles.min.css --no-map"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
     "stylint": "^1.5.9",
     "stylus": "^0.54.5"
   },
@@ -17,7 +21,7 @@
     "alias": "hankandre.com",
     "files": [
       "index.html",
-      "scripts.js",
+      "scripts.min.js",
       "styles.min.css",
       "favicon.ico"
     ]

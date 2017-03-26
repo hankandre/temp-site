@@ -78,7 +78,7 @@ p.sans {
   justify-content: center;
   animation: fadein 3.5s;
 }
-.logo-wrapper img {
+.logo-wrapper .logo {
   width: auto;
   height: 60%;
   padding: 0;

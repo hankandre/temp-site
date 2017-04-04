@@ -24,17 +24,14 @@ h3
 
 p
   font-family: 'Inconsolata', monospace
-  font-size: 1em
-  line-height: 1.5em
+  font-size: 18px
+  line-height: 110%
   margin: 0
 
 a
   color: inherit
-  transition: color 0.5s
+  transition font-weight 250ms, color 250ms
   text-decoration: none
-
-a:hover
-  font-weight: 500
 
 ul
   list-style-type: none
@@ -56,17 +53,15 @@ p.sans
   display: flex
   align-items: center
   justify-content: space-around
-
-#toast span:first-of-type
-  text-align: center
-  font-size: 3em
-
-#toast span:last-of-type
-  padding: 0 1em
-
-#toast.show
-  visibility: visible
-  animation: toastin 3s, toastout 3s 4s
+  span
+    &:first-of-type
+      text-align: center
+      font-size: 3em
+    &:last-of-type
+      padding: 0 1em
+  &.show
+    visibility: visible
+    animation: toastin 3s, toastout 3s 4s
 
 .logo-wrapper
   margin: 0
@@ -82,10 +77,27 @@ p.sans
     height: 60%
     padding: 0
     margin: 0
-  a
-    margin-right: 1.5vw
+  .social
+    list-style none
+  .link
+    display inline-block
+    margin-right 1.5vw
+    max-width 50px
+    a
+      i
+        transition color 250ms
+      &:hover
+        i
+          color lighten(black, 25%)
     &:last-of-type
-      margin: 0
+      margin-right 0
+    .anchor
+      height 3em
+      width 50px
+      display inline-block
+      margin-left -15px
+      background url('anchor-icon.png') center/70% no-repeat
+
 
 
 .one-quarter
@@ -147,7 +159,7 @@ p.sans
   height: 20px
   position: fixed
   z-index: 5
-  right: calc(1.25em / 2)
+  right: 20px
   top: 1em
   transform: rotate(0deg)
   cursor: pointer
@@ -170,64 +182,55 @@ p.sans
       top: 8px
     &:nth-of-type(4)
       top: 16px
-  .open
+  &.open
     span
       &:nth-of-type(1)
         top: 8px
         left: 50%
         width: 0
+      &:nth-of-type(2)
+        transform: rotate(45deg)
+      &:nth-of-type(3)
+        transform: rotate(-45deg)
+      &:nth-of-type(4)
+        top: 8px
+        left: 50%
+        width: 0
 
-#menuButton.open span:nth-of-type(2)
-  transform: rotate(45deg)
-
-#menuButton.open span:nth-of-type(3)
-  transform: rotate(-45deg)
-
-#menuButton.open span:nth-of-type(4)
-  top: 8px
-  left: 50%
-  width: 0
 
 #sidebar
   position: fixed
   height: 100vh
   width: 15em
-  right: -12em
+  right: calc(-15em + 65px)
   z-index: 2
   background-color: #d3d3d3
   transition: right 300ms
-
-#sidebar ul
-  margin-top: calc(1em + 45px)
-  margin-left: 3em
-
-#sidebar li
-  cursor: pointer
-  font-size: 1.5em
-  margin-bottom: 0.25em
-
-#sidebar li:hover
-  font-weight: 600
-
-#sidebar.open
-  right: 0
+  ul
+    margin-top: calc(1em + 45px)
+    margin-left: 65px
+  li
+    cursor: pointer
+    font-size: 1.5em
+    margin-bottom: 0.25em
+    &:hover
+      font-weight: 600
+  &.open
+    right: 0
 
 .graphic
   display: flex
   flex-direction: column
   align-items: center
-
-.graphic > *
-  width: 20em
-
-.graphic img
-  margin-bottom: 1em
-
-.graphic p
-  text-align: center
-  padding: 0 1em
-  margin: 0
-  font-size: 0.9em
+  > *
+    width: 20em
+  img
+    margin-bottom: 1em
+  p
+    text-align: center
+    padding: 0 1em
+    margin: 0
+    font-size: 0.9em
 
 .content-box
   margin: 0
@@ -235,32 +238,29 @@ p.sans
   display: flex
   justify-content: space-between
   align-items: center
-
-.content-box:nth-of-type(2n)
-  background-color: #f6f6f6
-
-.content-box > *
-  max-height: 80%
-  padding: 2em
+  &:nth-of-type(2n)
+    background-color: #f6f6f6
+  > *
+    max-height: 80%
+    padding: 2em
 
 .content
   flex: 1
   overflow: hidden
   position: relative
-
-.content i
-  color: #fa8072
-  margin-right: 1em
-  text-align: center
+  i
+    color: #fa8072
+    margin-right: 1em
+    text-align: center
+  p:after
+    content: '\A\A'
+    white-space: pre
 
 .title
   display: flex
   justify-content: space-between
   align-items: center
 
-.content p:after
-  content: '\A\A'
-  white-space: pre
 
 @media only screen and (max-width: 1000px)
   .content-box
@@ -268,28 +268,26 @@ p.sans
     height: unset
     margin: 0
     padding-top: 15vw
-
-  .content-box > *
-    padding: unset
+    > *
+      padding: unset
 
   .content
     overflow: unset
     text-align: center
     padding: 0 5vw 10vh
+    i
+      margin-bottom: 18px
+      margin-right: unset
+      order: -9999
 
   .title
     flex-direction: column
 
-  .content i
-    margin-bottom: 18px
-    margin-right: unset
-    order: -9999
 
   .graphic
     order: -100
-
-  .graphic img
-    border-radius: 0
+    img
+      border-radius: 0
 
 @media only screen and (max-width: 450px)
   #toast
@@ -300,28 +298,31 @@ p.sans
     margin: 0
     padding: 5vh 5vw
     border-radius: 0
+    &.show
+      visibility: visible
+      animation: toastinmobile 3s, toastoutmobile 3s 4s
 
-  #toast.show
-    visibility: visible
-    animation: toastinmobile 3s, toastoutmobile 3s 4s
+  .social
+    .link
+      margin-right 1.5vw
+      &:last-of-type
+        margin-right 0
 
-  .logo-wrapper img
-    width: 75vw
-    height: auto
-
-  .logo-wrapper a
-    margin-right: 10vw
+  .logo-wrapper 
+    img
+      width: 75vw
+      height: auto
+    a
+      margin-right: 10vw
 
   #sidebar
     right: -100vw
     width: 100vw
-
-  #sidebar > ul
-    text-align: right
-    margin-right: calc(15vw + 1.75em)
-
-  #sidebar .open
-    right: 0
+    > ul
+      text-align: right
+      margin-right: calc(15vw + 1.75em)
+    &.open
+      right: 0
 
   #menuButton
     right: 5vw

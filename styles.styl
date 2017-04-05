@@ -15,7 +15,8 @@ section
   height: 100vh
 
 h1
-  font-size: 3em
+  font-size: 54px
+  margin-bottom .25em
 
 h3
   font-weight: 600
@@ -39,6 +40,9 @@ ul
 
 p.sans
   font-family: inherit
+
+
+
 
 #toast
   visibility: hidden
@@ -73,8 +77,8 @@ p.sans
   justify-content: center
   animation: fadein 3.5s
   .logo
-    width: auto
-    height: 60%
+    width: 60vw
+    height: auto
     padding: 0
     margin: 0
   .social
@@ -84,11 +88,8 @@ p.sans
     margin-right 1.5vw
     max-width 50px
     a
-      i
-        transition color 250ms
       &:hover
-        i
-          color lighten(black, 25%)
+        color lighten(black, 25%)
     &:last-of-type
       margin-right 0
     .anchor
@@ -97,6 +98,10 @@ p.sans
       display inline-block
       margin-left -15px
       background url('anchor-icon.png') center/70% no-repeat
+      transition background 250ms
+      &:hover
+        background url('anchor-icon-hover.png') center/70% no-repeat
+
 
 
 
@@ -261,6 +266,56 @@ p.sans
   justify-content: space-between
   align-items: center
 
+#portfolio h2
+  margin-bottom 5vh
+
+.examples
+  display flex
+  justify-content space-between
+  flex-wrap wrap
+  .example
+    flex 1 23.5%
+    margin 5vh 2% 0 0
+    display flex
+    flex-direction column
+    position relative
+    &:first-of-type
+      margin-left 0
+    img
+      max-width 100%
+      display block
+      height 25vh
+    .text
+      position absolute
+      right 0
+      left 0
+      top 0
+      bottom 0
+      justify-content center
+      align-items center
+      color white
+      font-weight 700
+      font-size 24px
+      display flex
+      flex-direction column
+      opacity 0
+      transition opacity 250ms
+      background-color rgba(black, .8)
+      .theme-pink
+        &.bar
+          background-color #EF2672
+          width 0
+          height 2px
+          transition width 300ms 50ms
+      h4
+        margin 0 0 5px 0
+    &:hover
+      .text
+        opacity 1
+      .theme-pink
+        &.bar
+          width 90%
+
 
 @media only screen and (max-width: 1000px)
   .content-box
@@ -329,6 +384,10 @@ p.sans
 
   #toTop
     top: -15px
+  
+  .examples
+    .example
+      margin-left 0
 
 
 @keyframes fadein
